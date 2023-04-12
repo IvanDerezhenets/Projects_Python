@@ -15,7 +15,7 @@ def main(players):
     global table
     global id_list
     global first_column
-    global id_playerx
+    global id_player
     global attempt
     global all_attempts
     global counter
