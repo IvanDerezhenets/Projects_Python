@@ -113,6 +113,9 @@ def change_img():
 
     if click_on_1 == 0:
         dice_num_1 = random.randint(1, 6)
+        canvas.dice_1 = PhotoImage(master=canvas, file='dice_' + str(dice_num_1) + '.png')
+    else:
+        canvas.dice_1 = PhotoImage(master=canvas, file='dice_' + str(dice_num_1) + '_choosen.png')
     canvas.dice_1 = PhotoImage(master=canvas, file='dice_' + str(dice_num_1) + '.png')
     Button_dice1 = Button(master=canvas, image=canvas.dice_1, command=select_dice_1)
     Button_dice1['border'] = '0'
@@ -161,13 +164,21 @@ def change_dices():
     counter += 1
     if id_player == -1:
         id_player += 1
-    if counter <= 3:
+    if counter ==1:
+        set_null()
         root.after(1000, change_img)
         root.after(1500, change_img)
         root.after(2000, change_img)
         root.after(2500, change_img)
         root.after(3000, change_img)
         root.after(3001, set_null)
+    if 1 <counter <= 3:
+        root.after(1000, change_img)
+        root.after(1500, change_img)
+        root.after(2000, change_img)
+        root.after(2500, change_img)
+        root.after(3000, change_img)
+        # root.after(3001, set_null)
     else:
         pass
 
@@ -197,7 +208,7 @@ def on_select(event):
 
 def comb_detect(row, score):
     list_score = [-3, -2, -1, 0, 1, 2]
-    print(click_on_1, click_on_2, click_on_3, click_on_4, click_on_5)
+    print(dice_num_1, dice_num_2,dice_num_3, dice_num_4,dice_num_5)
     row = row
     score = 1
     return (row, score)
@@ -275,6 +286,7 @@ def select_dice_4():
     global click_on_4
     if click_on_4_attempt == 0:
         click_on_4_attempt += 1
+        print(click_on_4_attempt)
         canvas.dice_4 = PhotoImage(master=canvas, file='dice_' + str(dice_num_4) + '_choosen.png')
         Button_dice4 = Button(master=canvas, image=canvas.dice_4, command=select_dice_4)
         Button_dice4['border'] = '0'
@@ -282,6 +294,7 @@ def select_dice_4():
         click_on_4 = 1
     else:
         click_on_4_attempt = 0
+        print(click_on_4_attempt)
         canvas.dice_4 = PhotoImage(master=canvas, file='dice_' + str(dice_num_4) + '.png')
         Button_dice4 = Button(master=canvas, image=canvas.dice_4, command=select_dice_4)
         Button_dice4['border'] = '0'
@@ -292,8 +305,10 @@ def select_dice_4():
 def select_dice_5():
     global click_on_5_attempt
     global click_on_5
+    print(click_on_5_attempt)
     if click_on_5_attempt == 0:
         click_on_5_attempt += 1
+        print(click_on_5_attempt)
         canvas.dice_5 = PhotoImage(master=canvas, file='dice_' + str(dice_num_5) + '_choosen.png')
         Button_dice5 = Button(master=canvas, image=canvas.dice_5, command=select_dice_5)
         Button_dice5['border'] = '0'
@@ -301,6 +316,7 @@ def select_dice_5():
         click_on_5 = 1
     else:
         click_on_5_attempt = 0
+        print(click_on_5_attempt)
         canvas.dice_5 = PhotoImage(master=canvas, file='dice_' + str(dice_num_5) + '.png')
         Button_dice5 = Button(master=canvas, image=canvas.dice_5, command=select_dice_5)
         Button_dice5['border'] = '0'
@@ -328,5 +344,5 @@ def set_null():
 
 if __name__ == '__main__':
     global players
-    players = ['Соня', 'Ваня', '123', '123']
+    players = ['Соня', 'Ваня', '123', '123','456']
     main(players)
